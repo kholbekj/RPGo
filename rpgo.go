@@ -15,7 +15,7 @@ func main() {
 	player := createCharacter()
 
 	fmt.Printf("It's a %v!\n", goblin1.name)
-	if fight(&vip, goblin1) {
+	if fight(&player, goblin1) {
 		fmt.Println("You won!")
 		fmt.Printf("Winning nested you %v XP! You lucky bugger!\n", goblin1.xp)
 	} else {
