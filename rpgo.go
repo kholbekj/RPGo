@@ -23,6 +23,16 @@ func main() {
 	}
 }
 
+func fight(vip *Player, enemy Monster) bool {
+	for vip.alive() {
+		enemy.hp--
+		if !enemy.alive() {
+			return true
+		}
+	}
+	return false
+}
+
 type Entity struct {
 	name                  string
 	str, vit, def, hp, xp int
