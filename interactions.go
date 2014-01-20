@@ -13,8 +13,8 @@ import (
 func createCharacter() Player {
 	fmt.Printf("Welcome to PRGo! Since this is your first time\n" +
 		"visiting, we'll need to make you a brand new\n" +
-		"character! We'll start off with your na!\n")
-	fmt.Print("Enter na: ")
+		"character! We'll start off with your name!\n")
+	fmt.Print("Enter name: ")
 	in := bufio.NewReader(os.Stdin)
 	na, _ := in.ReadString('\n')
 	na = strings.TrimSpace(na)
@@ -24,7 +24,7 @@ func createCharacter() Player {
 
 	p := Player{}
 
-	for chosen := false; chosen; {
+	for chosen := false; chosen == false; {
 		fmt.Printf("[1] %v lifts boulders for breakfast.\n", na)
 		fmt.Printf("[2] %v can dodge bullets.\n", na)
 		fmt.Printf("[3] %v can take a beating from Chuck Norris\n", na)
@@ -50,13 +50,13 @@ func createCharacter() Player {
 }
 
 func characterSheet(p Player) {
-	fmt.Println("+-------------------------------+")
-	fmt.Println("| na |	%v", p.name)
-	fmt.Println("|")
-	fmt.Println("| Str	|   %v", p.str)
-	fmt.Println("| Def	|")
-	fmt.Println("| Vit	|   %v", p.vit)
-	fmt.Println("|")
-	fmt.Println("| HP	|	%v/%v", p.hp, p.vit)
-	fmt.Println("+-------------------------------+")
+	fmt.Printf("+-------------------------------+\n")
+	fmt.Printf("| name |	%v\n", p.name)
+	fmt.Printf("|\n")
+	fmt.Printf("| Str	|   %v\n", p.str)
+	fmt.Printf("| Def	|\n")
+	fmt.Printf("| Vit	|   %v\n", p.vit)
+	fmt.Printf("|\n")
+	fmt.Printf("| HP	|	%v/%v\n", p.hp, p.vit)
+	fmt.Printf("+-------------------------------+\n")
 }
