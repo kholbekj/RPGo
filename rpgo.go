@@ -15,37 +15,6 @@ import (
 
 func main() {
 
-	fmt.Println("Welcome to tinyRPG - the tiny RPG for big people or whatever.")
-	fmt.Println("First things first - what would you like to be called?")
-
-	in := bufio.NewReader(os.Stdin)
-	name, _ := in.ReadString('\n')
-	name = strings.TrimSpace(name)
-
-	fmt.Printf("Alright, %v! Please select one:\n", name)
-KIND_SELECT:
-	fmt.Println("1: I want to be strong!")
-	fmt.Println("2: I want to be tough as a rock!")
-	fmt.Println("3: I want to be dodgy!")
-
-	kind, _ := in.ReadString('\n')
-	kind = strings.TrimSpace(kind)
-	var vip Player
-
-	switch kind {
-	case "1":
-		vip = Player{name, 10, 5, 5, 5}
-		break
-	case "2":
-		vip = Player{name, 5, 10, 5, 10}
-		break
-	case "3":
-		vip = Player{name, 5, 5, 10, 5}
-		break
-	default:
-		fmt.Println("Just type 1, 2 or 3, please..")
-		goto KIND_SELECT
-	}
 	fmt.Println("You're fighting a monster!")
 	goblin1 := Monster{"GOBLIN", 3, 3, 3, 3, 1}
 	fmt.Printf("It's a %v!\n", goblin1.name)
