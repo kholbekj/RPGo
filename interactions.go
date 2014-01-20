@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// CreateCharacter should be run at beginning of
+// createCharacter should be run at beginning of
 // the program to get the info necessary
 // to create a new player.
 func createCharacter() Player {
@@ -51,7 +51,7 @@ func createCharacter() Player {
 
 func characterSheet(p Player) {
 	fmt.Printf("+-------------------------------+\n")
-	fmt.Printf("| name |	%v\n", p.name)
+	fmt.Printf("| name	|	%v\n", p.name)
 	fmt.Printf("|\n")
 	fmt.Printf("| Str	|	%v\n", p.str)
 	fmt.Printf("| Def	|	%v\n", p.def)
