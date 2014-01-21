@@ -8,15 +8,11 @@ import (
 	"fmt"
 )
 
-func init() {
-
-}
-
 func main() {
 	fmt.Println("You're fighting a monster!")
 
 	goblin1 := createMonster("Goblin", monster_easy)
-	player := createCharacter()
+	player := loadState()
 
 	fmt.Printf("It's a %v!\n", goblin1.Name)
 	if fight(&player, goblin1) {
