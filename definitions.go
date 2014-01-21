@@ -60,9 +60,16 @@ type room struct {
 	paths             map[string]int
 }
 
-func (r room) printMenu() {
-	x = iota
+func (r room) getMenu() string {
+	x := 1
+	menu := ""
 	for i := range r.paths {
-		fmt.Println("["+x+"] "r.paths[i])
+		menu = menu + fmt.Sprintf("[%v] %v\n", x, r.paths[i])
+		x++
 	}
+	for i := range r.enemies {
+		menu = menu + fmt.Sprintf("[%v] Fight %v\n", x, r.enemies[i].Name)
+		x++
+	}
+	return menu
 }

@@ -27,7 +27,8 @@ func main() {
 	gb := gameBoard{}
 	gb.rooms = append(gb.rooms, room{0, "Haunted Marketplace", "This place is emptier than your wallet. And that's saying something!", []Monster{goblin1}, map[string]int{"Herp": 23}})
 	gb.currentRoom = 0
-	gb.rooms[gb.currentRoom].printMenu()
+	action := dialogue(gb.rooms[gb.currentRoom].getMenu(), "Please enter one of the numbers in the menu..", isInRange(1, len(gb.rooms[gb.currentRoom].enemies)+len(gb.rooms[gb.currentRoom].paths)))
+	fmt.Println("You picked number ", action, "!")
 
 }
 
