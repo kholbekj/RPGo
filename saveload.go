@@ -24,8 +24,19 @@ func saveToFile(jsonString []byte) {
 	fmt.Println("Game Saved Succesfully!")
 }
 
-func loadState() {
+func loadState() Player {
+	file := loadFromFile()
+	if file == nil {
+		return createCharacter()
+	}
 
+	var p Player
+	err := json.Unmarshal(file, &p)
+	if err != nil {
+		panic(err)
+	}
+
+	return p
 }
 
 func loadFromFile() []byte {
