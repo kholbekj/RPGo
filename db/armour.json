@@ -1,0 +1,15 @@
+{
+  "name": "Woven Sweater",
+  "description": "Although you hate your awkwardly racist grandmother, you'll wear this (useless) sweater till you die... Or you find something else to wear.",
+  "defense": 0
+},
+{
+  "name": "Shiny (Thin) Gold Vest",
+  "description": "You thought it was your lucky day right? Wearing a vest of gold. Unfortunately it's an extremely soft material, and you'll most likely die with it equipped.",
+  "defense": -3
+},
+{
+  "name": "Woolen Sweater, Embroided with Wood",
+  "description": "This actually works better than the Golden vest.. Hah, that's so strange.",
+  "defense": 1
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Turd",
+  "description": "That's right. You picked up a turd from the ground, what are you even going to do with that..? Idiot.",
+  "attack": -1
+},
+{
+  "name": "Stick",
+  "description": "It's a stick. Not much to say..",
+  "attack": 1
+},
+{
+  "name": "Wooden Sword",
+  "description": "At least it's sharper than a stick. But you still look like a dunce.",
+  "attack": 2
+}
