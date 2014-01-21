@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strconv"
 	"strings"
 )
 
@@ -11,52 +12,80 @@ import (
 // the program to get the info necessary
 // to create a new player.
 func createCharacter() Player {
-	fmt.Printf("Welcome to PRGo! Since this is your first time\n" +
+	welcome := fmt.Sprintf("Welcome to PRGo! Since this is your first time\n" +
 		"visiting, we'll need to make you a brand new\n" +
-		"character! We'll start off with your name!\n")
-	fmt.Print("Enter name: ")
-	in := bufio.NewReader(os.Stdin)
-	na, _ := in.ReadString('\n')
-	na = strings.TrimSpace(na)
+		"character! We'll start off with your name!\n" +
+		"Enter name: ")
 
-	fmt.Printf("%v, eh? Well, it's your character... \n", na)
-	fmt.Printf("Anyway, how would you describe %v?\n", na)
+	na := dialogue(welcome, "Too long, please keep it 8 characters or shorter.", isOfLength(8))
 
-	p := Player{}
+	p := Player{Entity{na, 5, 5, 5, 5, 0}, []int{0}}
 
-	for chosen := false; chosen == false; {
-		fmt.Printf("[1] %v lifts boulders for breakfast.\n", na)
-		fmt.Printf("[2] %v can dodge bullets.\n", na)
-		fmt.Printf("[3] %v can take a beating from Chuck Norris\n", na)
-		selection, _ := in.ReadString('\n')
-		selection = strings.TrimSpace(selection)
-		switch selection {
-		case "1":
-			p = Player{Entity{na, 10, 5, 5, 5, 0}, []int{0}}
-			chosen = true
-		case "2":
-			p = Player{Entity{na, 5, 5, 10, 5, 0}, []int{0}}
-			chosen = true
-		case "3":
-			p = Player{Entity{na, 5, 10, 5, 10, 0}, []int{0}}
-			chosen = true
-		default:
-			fmt.Println("Please chose 1, 2 or 3..")
-		}
+	menu := fmt.Sprintf("%v, eh? Well, it's your character... \n"+
+		"Anyway, how would you describe %v?\n"+
+		"[1] %v lifts boulders for breakfast.\n"+
+		"[2] %v can dodge bullets.\n"+
+		"[3] %v can take a beating from Chuck Norris\n", na, na, na, na, na) //...batman
+
+	selection := dialogue(menu, "Please type 1, 2 or 3...", isInRange(1, 3))
+
+	switch selection {
+	case "1":
+		p.Str = 10
+	case "2":
+		p.Def = 10
+	case "3":
+		p.Vit = 10
+		p.Hp = 10
 	}
+
 	fmt.Println("Great, this is what you got:")
 	characterSheet(p)
 	return p
 }
 
+// characterSheet takes a player, and prints said players character sheet.
 func characterSheet(p Player) {
-	fmt.Printf("+-------------------------------+\n")
+	fmt.Printf("+--------------------->\n")
 	fmt.Printf("| name	|	%v\n", p.Name)
-	fmt.Printf("|\n")
+	fmt.Printf("|	|\n")
 	fmt.Printf("| Str	|	%v\n", p.Str)
 	fmt.Printf("| Def	|	%v\n", p.Def)
 	fmt.Printf("| Vit	|	%v\n", p.Vit)
-	fmt.Printf("|\n")
+	fmt.Printf("|	|\n")
 	fmt.Printf("| HP	|	%v/%v\n", p.Hp, p.Vit)
-	fmt.Printf("+-------------------------------+\n")
+	fmt.Printf("+--------------------->\n")
+}
+
+// dialogue prompts the user with the prompts, reads a line from stdIn, and if compare
+// with that string is true, it returns the string, otherwise it prints the failure message,
+// and starts over.
+func dialogue(prompt, failure string, compare func(s string) bool) string {
+	for {
+		fmt.Printf(prompt)
+		in := bufio.NewReader(os.Stdin)
+		input, _ := in.ReadString('\n')
+		input = strings.TrimSpace(input)
+		if compare(input) {
+			return input
+		}
+
+	}
+	return ""
+}
+
+// isInRange returns a function for checking weather a string is an integer in the range [min-max]
+func isInRange(min, max int) func(string) bool {
+	return func(s string) bool {
+		i, _ := strconv.Atoi(s)
+		return (min <= i && i <= max)
+	}
+}
+
+// isOfLength returns a function for checking of a string is of equal or shorter lenght than the argument.
+func isOfLength(l int) func(string) bool {
+	return func(s string) bool {
+		return len(s) <= l
+	}
+
 }
