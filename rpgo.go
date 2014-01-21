@@ -14,10 +14,12 @@ func main() {
 	goblin1 := createMonster("Goblin", monster_easy)
 	player := createCharacter()
 
-	fmt.Printf("It's a %v!\n", goblin1.name)
+	fmt.Printf("It's a %v!\n", goblin1.Name)
 	if fight(&player, goblin1) {
 		fmt.Println("You won!")
-		fmt.Printf("Winning nested you %v XP! You lucky bugger!\n", goblin1.xp)
+		fmt.Printf("Winning nested you %v XP! You lucky bugger!\n", goblin1.Xp)
+		fmt.Println(player)
+		saveState(player)
 	} else {
 		fmt.Println("You lost!")
 	}
@@ -25,7 +27,7 @@ func main() {
 
 func fight(vip *Player, enemy Monster) bool {
 	for vip.alive() {
-		enemy.hp--
+		enemy.Hp--
 		if !enemy.alive() {
 			return true
 		}
@@ -34,17 +36,17 @@ func fight(vip *Player, enemy Monster) bool {
 }
 
 type Entity struct {
-	name                  string
-	str, vit, def, hp, xp int
+	Name                  string
+	Str, Vit, Def, Hp, Xp int
 }
 
 func (e Entity) alive() bool {
-	return e.hp > 0
+	return e.Hp > 0
 }
 
 type Player struct {
 	Entity
-	inventory []int
+	Inventory []int
 }
 
 type Monster struct {

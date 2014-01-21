@@ -51,12 +51,12 @@ func createCharacter() Player {
 
 func characterSheet(p Player) {
 	fmt.Printf("+-------------------------------+\n")
-	fmt.Printf("| name	|	%v\n", p.name)
+	fmt.Printf("| name	|	%v\n", p.Name)
 	fmt.Printf("|\n")
-	fmt.Printf("| Str	|	%v\n", p.str)
-	fmt.Printf("| Def	|	%v\n", p.def)
-	fmt.Printf("| Vit	|	%v\n", p.vit)
+	fmt.Printf("| Str	|	%v\n", p.Str)
+	fmt.Printf("| Def	|	%v\n", p.Def)
+	fmt.Printf("| Vit	|	%v\n", p.Vit)
 	fmt.Printf("|\n")
-	fmt.Printf("| HP	|	%v/%v\n", p.hp, p.vit)
+	fmt.Printf("| HP	|	%v/%v\n", p.Hp, p.Vit)
 	fmt.Printf("+-------------------------------+\n")
 }
