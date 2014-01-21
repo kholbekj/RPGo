@@ -6,30 +6,35 @@ import (
 	"io/ioutil"
 )
 
-func saveState(p Player) bool {
+func saveState(p Player) {
 	save, err := json.Marshal(p)
 	if err != nil {
 		fmt.Println(err)
-		return false
 	}
 
-	if saveToFile(save) {
-		return true
-	} else {
-		return false
-	}
+	saveToFile(save)
 }
 
-func saveToFile(jsonString []byte) bool {
+func saveToFile(jsonString []byte) {
 	err := ioutil.WriteFile(".savedata.dat", jsonString, 0644)
 	if err != nil {
 		panic(err)
-		return false
 	}
 
-	return true
+	fmt.Println("Game Saved Succesfully!")
 }
 
 func loadState() {
-	// nyi
+
+}
+
+func loadFromFile() []byte {
+	file, err := ioutil.ReadFile(".savedata.dat")
+	if err != nil {
+		// file not found, or other error,
+		// load game without a savefile
+		return nil
+	}
+
+	return file
 }

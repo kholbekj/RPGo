@@ -8,6 +8,10 @@ import (
 	"fmt"
 )
 
+func init() {
+
+}
+
 func main() {
 	fmt.Println("You're fighting a monster!")
 
@@ -18,13 +22,11 @@ func main() {
 	if fight(&player, goblin1) {
 		fmt.Println("You won!")
 		fmt.Printf("Winning nested you %v XP! You lucky bugger!\n", goblin1.Xp)
+		player.addXp(goblin1.Xp)
 		saveState(player)
 	} else {
 		fmt.Println("You lost!")
 	}
-	fmt.Println(player.Xp)
-	player.addXp(goblin1.Xp)
-	fmt.Println(player.Xp)
 }
 
 func fight(vip *Player, enemy Monster) bool {
