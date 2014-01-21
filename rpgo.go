@@ -23,7 +23,7 @@ func main() {
 		fmt.Println("You lost!")
 	}
 	fmt.Println(player.Xp)
-	player.addXp(10)
+	player.addXp(goblin1.Xp)
 	fmt.Println(player.Xp)
 }
 

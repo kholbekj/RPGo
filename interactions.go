@@ -12,7 +12,7 @@ import (
 // the program to get the info necessary
 // to create a new player.
 func createCharacter() Player {
-	welcome := fmt.Sprintf("Welcome to PRGo! Since this is your first time\n" +
+	welcome := fmt.Sprintf("Welcome to RPGo! Since this is your first time\n" +
 		"visiting, we'll need to make you a brand new\n" +
 		"character! We'll start off with your name!\n" +
 		"Enter name: ")
