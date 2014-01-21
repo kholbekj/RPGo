@@ -14,6 +14,10 @@ type Player struct {
 	Inventory []int
 }
 
+func (p *Player) addXp(xp int) {
+	p.Xp = p.Xp + xp
+}
+
 type Monster struct {
 	Entity
 	lootTable []int
@@ -22,10 +26,9 @@ type Monster struct {
 type item struct {
 	name string
 }
-type asset struct {
-	id                int
-	name, description string
-	//trigger func()
+
+type gameBoard struct {
+	rooms []room
 }
 
 // Monster types					{str, vit, def, hp, xp}
@@ -42,10 +45,8 @@ func createMonster(name string, mtype [len(monster_weak)]int) Monster {
 }
 
 type room struct {
-	id int
+	id                int
 	name, description string
-	interactives      []asset
+	enemies           []Monster
 	paths             map[string]int
 }
-
-//func (args ...string) func (g gameBoard)(err)
