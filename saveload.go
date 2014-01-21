@@ -1,13 +1,9 @@
 package main
 
 import (
-	/*"crypto/aes"
-	"crypto/cipher"
-	"crypto/rand"*/
-
 	"encoding/json"
 	"fmt"
-	//"io"
+	"io/ioutil"
 )
 
 func saveState(p Player) bool {
@@ -16,35 +12,24 @@ func saveState(p Player) bool {
 		fmt.Println(err)
 		return false
 	}
-	fmt.Println(string(save))
+
+	if saveToFile(save) {
+		return true
+	} else {
+		return false
+	}
+}
+
+func saveToFile(jsonString []byte) bool {
+	err := ioutil.WriteFile(".savedata.dat", jsonString, 0644)
+	if err != nil {
+		panic(err)
+		return false
+	}
+
 	return true
 }
 
 func loadState() {
-
+	// nyi
 }
-
-/*func encryptSave(jsonData string) {
-	key := []byte("this is an awesome key muddafukaaaa")
-	cleartext := []byte(jsonData)
-
-	if len(cleartext)%aes.BlockSize != 0 {
-		panic("json data is not a multiple of the block size")
-	}
-
-	block, err := aes.NewCipher(key)
-	if err != nil {
-		panic(err)
-	}
-
-	ciphertext := make([]byte, aes.BlockSize+len(cleartext))
-	iv := ciphertext[:aes.BlockSize]
-	if _, err := io.ReadFull(rand.Reader, iv); err != nil {
-		panic(err)
-	}
-
-	mode := cipher.NewCBCEncrypter(block, iv)
-	mode.CryptBlocks(ciphertext[aes.BlockSize:], cleartext)
-
-	fmt.Printf("%x\n", ciphertext)
-}*/

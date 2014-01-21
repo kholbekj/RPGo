@@ -18,7 +18,6 @@ func main() {
 	if fight(&player, goblin1) {
 		fmt.Println("You won!")
 		fmt.Printf("Winning nested you %v XP! You lucky bugger!\n", goblin1.Xp)
-		fmt.Println(player)
 		saveState(player)
 	} else {
 		fmt.Println("You lost!")
