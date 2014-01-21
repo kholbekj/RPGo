@@ -27,6 +27,12 @@ func main() {
 	} else {
 		fmt.Println("You lost!")
 	}
+	//Test gameboard
+	gb := gameBoard{}
+	gb.rooms = append(gb.rooms, room{0, "Haunted Marketplace", "This place is emptier than your wallet. And that's saying something!", []Monster{goblin1}, map[string]int{"Herp": 23}})
+	gb.currentRoom = 0
+	gb.rooms[gb.currentRoom].printMenu()
+
 }
 
 func fight(vip *Player, enemy Monster) bool {

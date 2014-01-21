@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 type Entity struct {
 	Name                  string
 	Str, Vit, Def, Hp, Xp int
@@ -28,7 +32,12 @@ type item struct {
 }
 
 type gameBoard struct {
-	rooms []room
+	rooms       []room
+	currentRoom int
+}
+
+func (g gameBoard) move(id int) {
+	g.currentRoom = id
 }
 
 // Monster types					{str, vit, def, hp, xp}
@@ -49,4 +58,11 @@ type room struct {
 	name, description string
 	enemies           []Monster
 	paths             map[string]int
+}
+
+func (r room) printMenu() {
+	x = iota
+	for i := range r.paths {
+		fmt.Println("["+x+"] "r.paths[i])
+	}
 }
