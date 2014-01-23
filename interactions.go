@@ -21,11 +21,11 @@ func createCharacter() Player {
 
 	p := Player{Entity{na, 5, 5, 5, 5, 0}, []int{0}}
 
-	menu := fmt.Sprintf("%v, eh? Well, it's your character... \n"+
-		"Anyway, how would you describe %v?\n"+
-		"[1] %v lifts boulders for breakfast.\n"+
-		"[2] %v can dodge bullets.\n"+
-		"[3] %v can take a beating from Chuck Norris\n", na, na, na, na, na) //...batman
+	menu := fmt.Sprintf("%[1]v, eh? Well, it's your character... \n"+
+		"Anyway, how would you describe %[1]v?\n"+
+		"[1] %[1]v lifts boulders for breakfast.\n"+
+		"[2] %[1]v can dodge bullets.\n"+
+		"[3] %[1]v can take a beating from Chuck Norris\n", na)
 
 	selection := dialogue(menu, "Please type 1, 2 or 3...", isInRange(1, 3))
 
