@@ -22,13 +22,19 @@ func (p *Player) addXp(xp int) {
 	p.Xp = p.Xp + xp
 }
 
+func (p *Player) addItem(item int) {
+	for i := 0; i < len(p.Inventory); i++ {
+		if p.Inventory[i] == item {
+			return
+		}
+	}
+
+	p.Inventory = append(p.Inventory, item)
+}
+
 type Monster struct {
 	Entity
 	lootTable []int
-}
-
-type item struct {
-	name string
 }
 
 type gameBoard struct {

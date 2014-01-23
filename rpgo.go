@@ -19,6 +19,7 @@ func main() {
 		fmt.Println("You won!")
 		fmt.Printf("Winning nested you %v XP! You lucky bugger!\n", goblin1.Xp)
 		player.addXp(goblin1.Xp)
+		player.addItem(3)
 		saveState(player)
 	} else {
 		fmt.Println("You lost!")
